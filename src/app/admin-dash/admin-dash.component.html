@@ -1,0 +1,84 @@
+<div class="admin-layout">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="brand">
+            <div class="logo-icon"><i class="fa fa-shield-alt"></i></div>
+            <span class="brand-text">CURANET <small>Admin Portal</small></span>
+        </div>
+        <div class="nav-links">
+            <a routerLink="/appointmentlist" class="nav-btn"><i class="fa fa-calendar-check"></i> Appointments</a>
+            <button class="logout-btn" (click)="adminLogout()"><i class="fa fa-sign-out"></i> Logout</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Header Section -->
+        <div class="dashboard-header">
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p>System Overview & Patient Queue Management</p>
+            </div>
+            <div class="status-badge">
+                <span class="pulse"></span> System Active
+            </div>
+        </div>
+
+        <!-- content area -->
+        <div class="content-card">
+            <div class="card-header">
+                <h3><i class="fa fa-users-cog"></i> Patient Queue</h3>
+                <div class="search-box">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Search patients..." name="search">
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Patient Name</th>
+                            <th>City</th>
+                            <th>Contact</th>
+                            <th>Urgency Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let patient of patients">
+                            <td><span class="id-badge">#{{patient.pid}}</span></td>
+                            <td>
+                                <div class="patient-info">
+                                    <div class="avatar-circle">{{patient.pname ? patient.pname.charAt(0) : 'U'}}</div>
+                                    <span>{{patient.pname}}</span>
+                                </div>
+                            </td>
+                            <td>{{patient.pcity}}</td>
+                            <td>{{patient.pnumber}}</td>
+                            <td>
+                                <span class="status-badge" [ngClass]="{
+                                    'critical': patient.urgency === 'Critical',
+                                    'urgent': patient.urgency === 'Urgent',
+                                    'normal': patient.urgency === 'Normal'
+                                }">{{patient.urgency || 'Normal'}}</span>
+                            </td>
+                            <td class="actions">
+                                <button (click)="delete(patient.pid)" class="action-btn delete" title="Remove Patient">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="patients.length === 0" class="empty-state">
+                            <td colspan="6">
+                                <i class="fa fa-clipboard-list"></i>
+                                <p>No patients in the queue.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

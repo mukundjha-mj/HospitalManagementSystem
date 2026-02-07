@@ -1,0 +1,52 @@
+<nav class="navbar navbar-premium navbar-dark">
+    <a class="navbar-brand" routerLink="/doctor">CURANET</a>
+    <div class="ml-auto">
+        <button class="btn btn-outline-light mr-2" routerLink="/create-medicine">Add Medicine</button>
+        <button class="btn btn-outline-light" routerLink="/doctor">Back to Dashboard</button>
+        <button class="btn btn-danger-premium ml-2" (click)="logout()">Logout</button>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="glass-card">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="m-0" style="color: var(--primary);">Medicine Inventory</h3>
+            <button routerLink="/create-medicine" class="btn btn-premium shadow-sm">
+                <i class="fas fa-plus"></i> Add New Stock
+            </button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-premium table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Drug Name</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Expiry Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let medicine of medicines">
+                        <td>{{medicine.id}}</td>
+                        <td><strong>{{medicine.name}}</strong></td>
+                        <td class="text-success font-weight-bold">${{medicine.price}}</td>
+                        <td>
+                            <span
+                                [ngClass]="{'badge badge-danger': medicine.stock < 10, 'badge badge-success': medicine.stock >= 10}">
+                                {{medicine.stock}} Units
+                            </span>
+                        </td>
+                        <td>{{medicine.expirydate}}</td>
+                        <td>
+                            <button (click)="update(medicine.id)" class="btn btn-sm btn-info mr-2">Update</button>
+                            <button (click)="delete(medicine.id)" class="btn btn-sm btn-danger-premium">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

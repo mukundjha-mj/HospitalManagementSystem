@@ -1,0 +1,155 @@
+<div class="profile-container">
+    <!-- Header -->
+    <div class="page-header">
+        <div>
+            <h1>Profile</h1>
+            <p>Manage your personal information</p>
+        </div>
+        <button class="cn-btn" [ngClass]="isEditing ? 'cn-btn-primary' : 'cn-btn-secondary'" (click)="toggleEdit()">
+            <i [class]="isEditing ? 'fa fa-save' : 'fa fa-pencil'"></i>
+            {{isEditing ? 'Save' : 'Edit'}}
+        </button>
+    </div>
+
+    <!-- Profile Header Card -->
+    <div class="profile-card">
+        <div class="profile-header-content">
+            <div class="profile-avatar">{{getInitials()}}</div>
+            <div class="profile-details">
+                <h2>{{patient?.pname || 'Patient Name'}}</h2>
+                <span class="profile-role">Patient</span>
+                <span class="profile-id">ID: {{patient?.pid || 'N/A'}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personal Information -->
+    <div class="info-section">
+        <h3 class="section-title">Personal Information</h3>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Full Name <span class="required">*</span></label>
+                <input *ngIf="isEditing" type="text" class="cn-input" [(ngModel)]="formData.pname"
+                    placeholder="Enter your full name">
+                <div *ngIf="!isEditing" class="display-value">{{patient?.pname || 'Not provided'}}</div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-envelope"></i> Email Address</label>
+                <div class="display-value readonly">{{patient?.pemail || 'Not provided'}}</div>
+                <small class="help-text">Email cannot be changed</small>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa fa-phone"></i> Phone Number</label>
+                <input *ngIf="isEditing" type="tel" class="cn-input" [(ngModel)]="formData.pphone"
+                    placeholder="Enter phone number">
+                <div *ngIf="!isEditing" class="display-value">{{patient?.pphone || 'Not provided'}}</div>
+            </div>
+
+            <div class="form-group">
+                <label>Age</label>
+                <input *ngIf="isEditing" type="number" class="cn-input" [(ngModel)]="formData.age"
+                    placeholder="Enter age">
+                <div *ngIf="!isEditing" class="display-value">{{patient?.age || 'Not provided'}}</div>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <select *ngIf="isEditing" class="cn-input" [(ngModel)]="formData.gender">
+                    <option value="">Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div *ngIf="!isEditing" class="display-value">{{patient?.gender || 'Not provided'}}</div>
+            </div>
+
+            <div class="form-group">
+                <label>Blood Group</label>
+                <select *ngIf="isEditing" class="cn-input" [(ngModel)]="formData.bloodGroup">
+                    <option value="">Select blood group</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+                <div *ngIf="!isEditing" class="display-value">{{patient?.bloodGroup || 'Not provided'}}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medical Information -->
+    <div class="info-section">
+        <h3 class="section-title">Medical Information</h3>
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label>Allergies</label>
+                <textarea *ngIf="isEditing" class="cn-input" [(ngModel)]="formData.allergies" rows="3"
+                    placeholder="List any allergies (separate with commas)"></textarea>
+                <div *ngIf="!isEditing" class="display-value">{{patient?.allergies || 'None reported'}}</div>
+            </div>
+
+            <div class="form-group full-width">
+                <label>Current Medications</label>
+                <textarea *ngIf="isEditing" class="cn-input" [(ngModel)]="formData.medications" rows="3"
+                    placeholder="List current medications (separate with commas)"></textarea>
+                <div *ngIf="!isEditing" class="display-value">{{patient?.medications || 'None reported'}}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Address Information -->
+    <div class="info-section">
+        <h3 class="section-title">Address Information</h3>
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label>City</label>
+                <input *ngIf="isEditing" type="text" class="cn-input" [(ngModel)]="formData.pcity"
+                    placeholder="Enter city">
+                <div *ngIf="!isEditing" class="display-value">{{patient?.pcity || 'Not provided'}}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Contact -->
+    <div class="info-section">
+        <h3 class="section-title">Emergency Contact</h3>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Contact Name</label>
+                <input *ngIf="isEditing" type="text" class="cn-input" [(ngModel)]="formData.emergencyContact"
+                    placeholder="Enter emergency contact name">
+                <div *ngIf="!isEditing" class="display-value">{{patient?.emergencyContact || 'Not provided'}}</div>
+            </div>
+
+            <div class="form-group">
+                <label>Emergency Phone</label>
+                <input *ngIf="isEditing" type="tel" class="cn-input" [(ngModel)]="formData.emergencyPhone"
+                    placeholder="Enter emergency phone">
+                <div *ngIf="!isEditing" class="display-value">{{patient?.emergencyPhone || 'Not provided'}}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Status -->
+    <div class="info-section">
+        <h3 class="section-title">Account Status</h3>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Account Status</label>
+                <div class="display-value">
+                    <span class="status-badge active">Active</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Member Since</label>
+                <div class="display-value">{{getMemberSince()}}</div>
+            </div>
+        </div>
+    </div>
+</div>

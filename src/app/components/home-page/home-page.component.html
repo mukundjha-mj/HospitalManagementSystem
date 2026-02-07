@@ -1,0 +1,149 @@
+<div class="landing-page">
+  <!-- Navbar -->
+  <nav class="navbar" [class.scrolled]="isScrolled">
+    <div class="container nav-container">
+      <div class="brand">
+        <div class="logo-icon"><i class="fa fa-heartbeat"></i></div>
+        <span class="brand-text">CURANET</span>
+      </div>
+      <div class="nav-links">
+        <a routerLink="/home" class="nav-item active">Home</a>
+        <a href="#features" class="nav-item">Features</a>
+        <a href="#about" class="nav-item">About</a>
+      </div>
+      <div class="auth-buttons">
+        <button class="btn-login" routerLink="/patient-login">Patient Portal</button>
+        <div class="dropdown">
+          <button class="btn-provider">Provider Login <i class="fa fa-chevron-down"></i></button>
+          <div class="dropdown-content">
+            <a routerLink="/doc-login"><i class="fa fa-user-md"></i> Doctor</a>
+            <a routerLink="/admin-login"><i class="fa fa-user-shield"></i> Admin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="badge-pill mb-3">
+          <span class="badge-dot"></span> Hospital Management System
+        </div>
+        <h1 class="hero-title">Your Health, <span class="gradient-text">Our Priority</span></h1>
+        <p class="hero-subtitle">
+          Streamline your hospital experience with CuraNet. specialized in managing patient records,
+          appointments, and emergency services efficiently.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary-lg shadow-lg" routerLink="/patient-login">
+            Book Appointment <i class="fa fa-calendar-check ml-2"></i>
+          </button>
+          <button class="btn-outline-lg" routerLink="/doc-login">
+            <i class="fa fa-user-md mr-2"></i> Doctor Portal
+          </button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="image-wrapper glass-card-3d">
+          <!-- Using a realistic, professional medical image -->
+          <img
+            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+            alt="Hospital Reception" style="object-fit: cover; height: 100%;">
+        </div>
+      </div>
+    </div>
+    <!-- Background Shapes -->
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+  </header>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Why Choose CuraNet?</h2>
+        <p class="section-subtitle">Comprehensive tools designed for your well-being</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="icon-box icon-red">
+            <i class="fa fa-heartbeat"></i>
+          </div>
+          <h3>Emergency Card</h3>
+          <p>Instant access to critical health info via QR code. Vital for emergency responders.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-box icon-blue">
+            <i class="fa fa-calendar-check"></i>
+          </div>
+          <h3>Smart Scheduling</h3>
+          <p>Book appointments effortlessly. Get real-time updates and reminders directly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-box icon-green">
+            <i class="fa fa-file-medical"></i>
+          </div>
+          <h3>Digital Records</h3>
+          <p>Securely store prescriptions, reports, and history in encrypted cloud storage.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-box icon-purple">
+            <i class="fa fa-user-md"></i>
+          </div>
+          <h3>Find Care</h3>
+          <p>Locate nearby hospitals and specialists with integrated Google Maps support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-content">
+          <h2>Ready to take control of your health?</h2>
+          <p>Create your patient profile today and experience the future of hospital management.</p>
+          <button class="btn-white-lg" routerLink="/patient-login">Register as Patient</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>CURANET</h3>
+          <p>Empowering healthcare through technology. Secure, simple, and smart.</p>
+        </div>
+        <div class="footer-links-col">
+          <h4>Platform</h4>
+          <a href="#">Patient Portal</a>
+          <a href="#">Doctor Portal</a>
+          <a href="#">Admin Access</a>
+        </div>
+        <div class="footer-links-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-links-col">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CuraNet Hospital Management System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,139 @@
+<nav class="navbar navbar-premium navbar-dark">
+    <a class="navbar-brand" routerLink="/doctor">CURANET</a>
+    <div class="ml-auto">
+        <button class="btn btn-outline-light" routerLink="/doctor">Back to Dashboard</button>
+        <button class="btn btn-danger-premium ml-2" (click)="logout()">Logout</button>
+    </div>
+</nav>
+
+<div class="container mt-5 mb-5">
+    <div class="glass-card mx-auto" style="max-width: 800px;">
+        <h2 class="text-center mb-4" style="color: var(--primary);">Patient Registration</h2>
+        <form (ngSubmit)="onSubmit()">
+
+            <h5 class="text-secondary mb-3">Login Credentials</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" class="form-control" placeholder="patient@example.com"
+                            [(ngModel)]="patient.email">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Create password"
+                            [(ngModel)]="patient.password">
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="text-secondary mb-3 mt-3">Personal Information</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="pname" class="form-control" placeholder="Enter full name"
+                            [(ngModel)]="patient.pname" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" name="age" class="form-control" placeholder="Age"
+                            [(ngModel)]="patient.age">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select name="gender" class="form-control" [(ngModel)]="patient.gender">
+                            <option value="">Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="text" name="pnumber" class="form-control" placeholder="Phone number"
+                            [(ngModel)]="patient.pnumber">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" name="pcity" class="form-control" placeholder="City"
+                            [(ngModel)]="patient.pcity">
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="text-secondary mb-3 mt-3">Emergency Profile (CuraNet)</h5>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Blood Group</label>
+                        <select name="bloodGroup" class="form-control" [(ngModel)]="patient.bloodGroup">
+                            <option value="">Select</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Urgency Level</label>
+                        <input type="text" name="urgency" class="form-control" placeholder="Normal/Critical"
+                            [(ngModel)]="patient.urgency">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Consultation Fees</label>
+                        <input type="number" name="fees" class="form-control" placeholder="0.00"
+                            [(ngModel)]="patient.fees">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Allergies & Conditions</label>
+                <textarea name="allergies" class="form-control" rows="2"
+                    placeholder="List any allergies or medical conditions..."
+                    [(ngModel)]="patient.allergies"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Emergency Contact Name</label>
+                        <input type="text" name="emergencyContactName" class="form-control" placeholder="Contact Name"
+                            [(ngModel)]="patient.emergencyContactName">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Emergency Contact Number</label>
+                        <input type="text" name="emergencyContactNumber" class="form-control"
+                            placeholder="Contact Number" [(ngModel)]="patient.emergencyContactNumber">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-premium btn-block mt-4">Register Patient</button>
+        </form>
+    </div>
+</div>

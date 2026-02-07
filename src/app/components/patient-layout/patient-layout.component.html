@@ -1,0 +1,81 @@
+<div class="patient-layout" [class.sidebar-expanded]="sidebarOpen">
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="mobile-logo">
+            <div class="logo-icon">C</div>
+            <span class="logo-text">CuraNet</span>
+        </div>
+        <a routerLink="/my-profile" class="profile-btn">
+            <div class="user-avatar">{{getInitials()}}</div>
+        </a>
+    </header>
+
+    <!-- Desktop Sidebar -->
+    <aside class="sidebar" [class.expanded]="sidebarOpen" (mouseenter)="sidebarOpen = true"
+        (mouseleave)="sidebarOpen = false">
+        <div class="sidebar-header">
+            <div class="logo-icon">C</div>
+            <span class="logo-text">CuraNet</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a routerLink="/patient" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                class="nav-item">
+                <i class="fa fa-th-large"></i>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a routerLink="/my-appointments" routerLinkActive="active" class="nav-item">
+                <i class="fa fa-calendar"></i>
+                <span class="nav-text">Appointments</span>
+            </a>
+            <a routerLink="/emergency-card" routerLinkActive="active" class="nav-item">
+                <i class="fa fa-medkit"></i>
+                <span class="nav-text">Emergency Card</span>
+            </a>
+            <a routerLink="/my-profile" routerLinkActive="active" class="nav-item">
+                <i class="fa fa-user"></i>
+                <span class="nav-text">Profile</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">{{getInitials()}}</div>
+                <div class="user-details">
+                    <span class="user-name">{{patient?.pname || 'Patient'}}</span>
+                    <span class="user-role">Patient</span>
+                </div>
+            </div>
+            <button class="logout-btn" (click)="logout()">
+                <i class="fa fa-sign-out"></i>
+                <span class="nav-text">Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <router-outlet></router-outlet>
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <a routerLink="/patient" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+            class="mobile-nav-item">
+            <i class="fa fa-th-large"></i>
+            <span>Home</span>
+        </a>
+        <a routerLink="/my-appointments" routerLinkActive="active" class="mobile-nav-item">
+            <i class="fa fa-calendar"></i>
+            <span>Appointments</span>
+        </a>
+        <a routerLink="/emergency-card" routerLinkActive="active" class="mobile-nav-item emergency">
+            <i class="fa fa-medkit"></i>
+            <span>Emergency</span>
+        </a>
+        <button class="mobile-nav-item logout" (click)="logout()">
+            <i class="fa fa-sign-out"></i>
+            <span>Logout</span>
+        </button>
+    </nav>
+</div>

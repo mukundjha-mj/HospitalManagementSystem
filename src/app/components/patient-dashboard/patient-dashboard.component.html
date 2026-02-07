@@ -1,0 +1,158 @@
+<div class="dashboard-container">
+    <!-- Header -->
+    <div class="dashboard-header">
+        <div>
+            <h1 class="text-3xl font-bold text-foreground">Welcome back, {{patient?.pname?.split(' ')[0] || 'Patient'}}!
+            </h1>
+            <p class="text-muted">Manage your health records and medical information</p>
+        </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-content">
+                <div>
+                    <p class="stat-label">Medical Records</p>
+                    <p class="stat-value">{{medicalRecords}}</p>
+                </div>
+                <div class="stat-icon blue">
+                    <i class="fa fa-file-text-o"></i>
+                </div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-content">
+                <div>
+                    <p class="stat-label">Observations</p>
+                    <p class="stat-value">{{observations}}</p>
+                </div>
+                <div class="stat-icon red">
+                    <i class="fa fa-heartbeat"></i>
+                </div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-content">
+                <div>
+                    <p class="stat-label">Appointments</p>
+                    <p class="stat-value">{{upcomingAppointments}}</p>
+                </div>
+                <div class="stat-icon green">
+                    <i class="fa fa-calendar-check-o"></i>
+                </div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-content">
+                <div>
+                    <p class="stat-label">Total Entries</p>
+                    <p class="stat-value">{{totalEntries}}</p>
+                </div>
+                <div class="stat-icon purple">
+                    <i class="fa fa-database"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions-card">
+        <h3 class="section-title">Quick Actions</h3>
+        <div class="actions-grid">
+            <a routerLink="/my-appointments" class="action-item primary">
+                <div class="action-icon-wrapper">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <div class="action-text">
+                    <span class="action-title">Appointments</span>
+                    <span class="action-subtitle">Manage appointments</span>
+                </div>
+            </a>
+            <a routerLink="/emergency-card" class="action-item red">
+                <div class="action-icon-wrapper">
+                    <i class="fa fa-medkit"></i>
+                </div>
+                <div class="action-text">
+                    <span class="action-title">Emergency Card</span>
+                    <span class="action-subtitle">View emergency info</span>
+                </div>
+            </a>
+            <a routerLink="/my-profile" class="action-item green">
+                <div class="action-icon-wrapper">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="action-text">
+                    <span class="action-title">Profile</span>
+                    <span class="action-subtitle">Update your info</span>
+                </div>
+            </a>
+            <a href="https://www.google.com/maps/search/hospitals+near+me" target="_blank" class="action-item purple">
+                <div class="action-icon-wrapper">
+                    <i class="fa fa-map-marker"></i>
+                </div>
+                <div class="action-text">
+                    <span class="action-title">Nearby Care</span>
+                    <span class="action-subtitle">Find hospitals near you</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="activity-grid">
+        <!-- Recent Encounters -->
+        <div class="activity-card">
+            <div class="activity-header">
+                <h3 class="section-title">Recent Encounters</h3>
+                <a routerLink="/my-appointments" class="view-all-link">View All</a>
+            </div>
+            <div class="activity-list">
+                <div class="activity-item" *ngFor="let encounter of recentEncounters">
+                    <div class="activity-icon">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+                    <div class="activity-details">
+                        <span class="activity-title">{{encounter.title}}</span>
+                        <span class="activity-meta">{{encounter.type}} • {{encounter.date}}</span>
+                    </div>
+                    <span class="activity-badge" [ngClass]="encounter.status">{{encounter.status}}</span>
+                </div>
+                <div class="empty-state" *ngIf="recentEncounters.length === 0">
+                    <i class="fa fa-file-text-o"></i>
+                    <p>No encounters yet</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health Profile Summary -->
+        <div class="activity-card">
+            <div class="activity-header">
+                <h3 class="section-title">Health Profile</h3>
+                <a routerLink="/my-profile" class="view-all-link">Edit</a>
+            </div>
+            <div class="profile-summary">
+                <div class="profile-row">
+                    <span class="profile-label">Blood Group</span>
+                    <span class="profile-value highlight">{{patient?.bloodGroup || 'Not Set'}}</span>
+                </div>
+                <div class="profile-row">
+                    <span class="profile-label">Age</span>
+                    <span class="profile-value">{{patient?.age || '--'}} years</span>
+                </div>
+                <div class="profile-row">
+                    <span class="profile-label">Gender</span>
+                    <span class="profile-value">{{patient?.gender || 'Not Set'}}</span>
+                </div>
+                <div class="profile-row">
+                    <span class="profile-label">City</span>
+                    <span class="profile-value">{{patient?.pcity || 'Not Set'}}</span>
+                </div>
+                <div class="profile-row" *ngIf="patient?.allergies">
+                    <span class="profile-label">Allergies</span>
+                    <span class="profile-value danger">{{patient?.allergies}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

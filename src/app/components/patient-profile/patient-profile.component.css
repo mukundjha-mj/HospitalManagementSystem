@@ -1,0 +1,173 @@
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Header */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--foreground);
+}
+
+.page-header p {
+    margin: 4px 0 0;
+    color: var(--muted-foreground);
+}
+
+/* Profile Card */
+.profile-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-header-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.profile-avatar {
+    width: 64px;
+    height: 64px;
+    background: rgba(30, 157, 241, 0.1);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.profile-details h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--foreground);
+}
+
+.profile-role {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    margin-top: 2px;
+}
+
+.profile-id {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    font-family: monospace;
+    margin-top: 4px;
+}
+
+/* Info Sections */
+.info-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin: 0 0 1rem 0;
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+@media (max-width: 640px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-group label .required {
+    color: var(--destructive);
+}
+
+.form-group label i {
+    font-size: 14px;
+}
+
+.display-value {
+    padding: 0.75rem 1rem;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--foreground);
+    font-size: 0.875rem;
+}
+
+.display-value.readonly {
+    background: var(--muted);
+    color: var(--muted-foreground);
+}
+
+.help-text {
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    margin-top: 4px;
+}
+
+textarea.cn-input {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-badge.active {
+    background: rgba(0, 184, 122, 0.1);
+    color: var(--chart-2);
+}
+
+.status-badge.pending {
+    background: rgba(247, 185, 40, 0.1);
+    color: var(--chart-3);
+}

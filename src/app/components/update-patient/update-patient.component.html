@@ -1,0 +1,45 @@
+<nav class="navbar navbar-premium navbar-dark">
+    <a class="navbar-brand" routerLink="/doctor">CURANET</a>
+    <div class="ml-auto">
+        <button class="btn btn-outline-light" routerLink="/doctor">Back to Dashboard</button>
+        <button class="btn btn-danger-premium ml-2" (click)="logout()">Logout</button>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="glass-card mx-auto" style="max-width: 600px;">
+        <h2 class="text-center mb-4" style="color: var(--primary);">Update Patient Details</h2>
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Enter full name"
+                    [(ngModel)]="patient.pname" required>
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" name="city" class="form-control" placeholder="Enter city"
+                    [(ngModel)]="patient.pcity">
+            </div>
+            <div class="form-group">
+                <label>Contact Number</label>
+                <input type="text" name="number" class="form-control" placeholder="Enter contact number"
+                    [(ngModel)]="patient.pnumber">
+            </div>
+            <div class="form-group">
+                <label>Blood Group</label>
+                <input type="text" name="bloodGroup" class="form-control" placeholder="e.g. A+, O-"
+                    [(ngModel)]="patient.bloodGroup">
+            </div>
+            <div class="form-group">
+                <label>Urgency</label>
+                <select class="form-control" name="urgency" [(ngModel)]="patient.urgency">
+                    <option value="Normal">Normal</option>
+                    <option value="Urgent">Urgent</option>
+                    <option value="Critical">Critical</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-premium btn-block mt-4">Update Details</button>
+        </form>
+    </div>
+</div>

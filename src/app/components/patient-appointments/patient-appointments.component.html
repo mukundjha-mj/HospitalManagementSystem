@@ -1,0 +1,107 @@
+<div class="appointments-container">
+    <!-- Header -->
+    <div class="page-header">
+        <div>
+            <h1>Appointments</h1>
+            <p>Manage your upcoming and past appointments</p>
+        </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stats-row">
+        <div class="mini-stat">
+            <div class="mini-stat-icon blue">
+                <i class="fa fa-calendar-check-o"></i>
+            </div>
+            <div class="mini-stat-content">
+                <span class="mini-stat-value">{{upcomingCount}}</span>
+                <span class="mini-stat-label">Upcoming</span>
+            </div>
+        </div>
+        <div class="mini-stat">
+            <div class="mini-stat-icon green">
+                <i class="fa fa-check-circle"></i>
+            </div>
+            <div class="mini-stat-content">
+                <span class="mini-stat-value">{{completedCount}}</span>
+                <span class="mini-stat-label">Completed</span>
+            </div>
+        </div>
+        <div class="mini-stat">
+            <div class="mini-stat-icon red">
+                <i class="fa fa-times-circle"></i>
+            </div>
+            <div class="mini-stat-content">
+                <span class="mini-stat-value">{{cancelledCount}}</span>
+                <span class="mini-stat-label">Cancelled</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointments List -->
+    <div class="appointments-section">
+        <h3 class="section-title">Upcoming Appointments</h3>
+
+        <div class="appointments-list" *ngIf="upcomingAppointments.length > 0">
+            <div class="appointment-card" *ngFor="let apt of upcomingAppointments">
+                <div class="appointment-left">
+                    <div class="appointment-date">
+                        <span class="date-day">{{apt.day}}</span>
+                        <span class="date-month">{{apt.month}}</span>
+                    </div>
+                </div>
+                <div class="appointment-content">
+                    <div class="appointment-header">
+                        <h4>{{apt.doctorName}}</h4>
+                        <span class="status-badge" [ngClass]="apt.status">{{apt.status}}</span>
+                    </div>
+                    <p class="appointment-specialty">{{apt.specialty}}</p>
+                    <div class="appointment-meta">
+                        <span><i class="fa fa-clock-o"></i> {{apt.time}}</span>
+                        <span><i class="fa fa-map-marker"></i> {{apt.location}}</span>
+                    </div>
+                    <p class="appointment-reason" *ngIf="apt.reason">
+                        <i class="fa fa-stethoscope"></i> {{apt.reason}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-state" *ngIf="upcomingAppointments.length === 0">
+            <i class="fa fa-calendar-o"></i>
+            <h4>No upcoming appointments</h4>
+            <p>Schedule an appointment with your doctor</p>
+        </div>
+    </div>
+
+    <!-- Past Appointments -->
+    <div class="appointments-section">
+        <h3 class="section-title">Past Appointments</h3>
+
+        <div class="appointments-list" *ngIf="pastAppointments.length > 0">
+            <div class="appointment-card past" *ngFor="let apt of pastAppointments">
+                <div class="appointment-left">
+                    <div class="appointment-date">
+                        <span class="date-day">{{apt.day}}</span>
+                        <span class="date-month">{{apt.month}}</span>
+                    </div>
+                </div>
+                <div class="appointment-content">
+                    <div class="appointment-header">
+                        <h4>{{apt.doctorName}}</h4>
+                        <span class="status-badge" [ngClass]="apt.status">{{apt.status}}</span>
+                    </div>
+                    <p class="appointment-specialty">{{apt.specialty}}</p>
+                    <div class="appointment-meta">
+                        <span><i class="fa fa-clock-o"></i> {{apt.time}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-state" *ngIf="pastAppointments.length === 0">
+            <i class="fa fa-history"></i>
+            <p>No past appointments</p>
+        </div>
+    </div>
+</div>
