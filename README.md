@@ -43,15 +43,15 @@
 
 ### 1. **Home Page**
 *A premium landing page with immersive hero section and feature highlights.*
-*(Add screenshot here)*
+![Home Page](assets/home.png)
 
 ### 2. **Patient Dashboard**
 *User-friendly dashboard for managing health records.*
-*(Add screenshot here)*
+![Patient Dashboard](assets/patient.png)
 
 ### 3. **Admin Dashboard**
 *Powerful control center for hospital administration.*
-*(Add screenshot here)*
+![Admin Dashboard](assets/admin.png)
 
 ---
 
